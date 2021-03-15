@@ -1,0 +1,13 @@
+oc create -f <>
+oc get all --selector app=airflow -o name
+oc delete all --selector app=airflow
+
+
+TEMPLATES: https://docs.openshift.com/container-platform/4.7/openshift_images/using-templates.html
+oc create -f <filename>
+oc process -f <templatename> --param-file=airflow.env    | oc create -f -
+oc get templates
+oc delete template/apache-airflow
+
+
+oc process -f FernetVolumeTemplate.yml --param-file=airflow.env  | oc create -f -
